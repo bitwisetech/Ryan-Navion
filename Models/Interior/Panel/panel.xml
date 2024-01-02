@@ -146,15 +146,7 @@
   </model>
 
   <!-- ********************************************************************** -->
-  <model>
-    <path>Instruments/kr87-adf/kr87.xml</path>
-    <offsets>
-      <x-m>  0.010 </x-m>
-      <y-m>  0.229 </y-m>
-      <z-m> -0.034 </z-m>
-    </offsets>
-  </model>
-
+  <!-- KI227 HSI   -->
   <model>
     <path>Instruments/kr87-adf/ki227-01.xml</path>
     <offsets>
@@ -164,12 +156,47 @@
     </offsets>
   </model>
 
+  <!-- KAP140 A/P    -->
+  <model>
+    <path>Instruments/kap140/kap140.xml</path>
+    <offsets>
+      <x-m> -0.006 </x-m>
+      <y-m>  0.229 </y-m>
+      <z-m>  0.120 </z-m>
+    </offsets>
+  </model>
+
+  <!-- KX165 COM/NAV   -->
   <model>
     <path>Instruments/kx165/kx165-1.xml</path>
     <offsets>
       <x-m> -0.005 </x-m>
       <y-m>  0.229 </y-m>
-      <z-m>  0.061 </z-m>
+      <z-m>  0.067 </z-m>
+    </offsets>
+  </model>
+
+  <!-- KNS80 RNAV-->
+  <model>
+    <path>Instruments/kns80/kns80.xml</path>
+    <offsets>
+      <!--x-m> 0.012 </x-m-->
+      <!--y-m> 0.399 </y-m-->
+      <!--z-m> 0.072 </z-m-->
+      <x-m> 0.012 </x-m>
+      <x-m> -0.200052 </x-m>
+      <y-m>  0.220 </y-m>
+      <z-m>  0.003 </z-m>
+    </offsets>
+  </model>
+
+  <!--  KR87 ADF -->
+  <model>
+    <path>Instruments/kr87-adf/kr87.xml</path>
+    <offsets>
+      <x-m>  0.010 </x-m>
+      <y-m>  0.229 </y-m>
+      <z-m> -0.075 </z-m>
     </offsets>
   </model>
 
@@ -178,16 +205,7 @@
     <offsets>
       <x-m> 0.007 </x-m>
       <y-m> 0.229 </y-m>
-      <z-m> 0.008 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <path>Instruments/kap140/kap140.xml</path>
-    <offsets>
-      <x-m> -0.006 </x-m>
-      <y-m>  0.229 </y-m>
-      <z-m>  0.114 </z-m>
+      <z-m>-0.120 </z-m>
     </offsets>
   </model>
 
@@ -215,18 +233,6 @@
       <x-m>  0.009 </x-m>
       <y-m> -0.420 </y-m>
       <z-m>  0.093 </z-m>
-    </offsets>
-  </model>
-
-  <!-- KNS80 -->
-  <model>
-    <path>Instruments/kns80/kns80.xml</path>
-    <offsets>
-      <x-m> 0.012 </x-m>
-      <!--y-m> 0.399 </y-m-->
-      <y-m> 0.229 </y-m>
-      <!--z-m> 0.072 </z-m-->
-      <z-m> -0.090 </z-m>
     </offsets>
   </model>
 
