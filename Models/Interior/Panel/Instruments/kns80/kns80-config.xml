@@ -8,7 +8,7 @@
     <power-nominal>instrumentation/kns80/config/power-nominal</power-nominal>
     <power-supplied>systems/electrical/outputs/kns80</power-supplied>
 
-    <nav-power-btn>instrumentation/nav[0]/power-btn</nav-power-btn>
+    <nav-power-btn>instrumentation/na`]/power-btn</nav-power-btn>
     <nav-audio-btn>instrumentation/nav[0]/audio-btn</nav-audio-btn>
     <nav-ident>instrumentation/nav[0]/ident</nav-ident>
     <nav-volume>instrumentation/nav[0]/volume</nav-volume>

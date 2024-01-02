@@ -23,6 +23,7 @@
 
     <systems include="rules.xml">
       <path>Aircraft/Ryan-Navion/Systems/systems.xml</path>
+      <path>Aircraft/Lancair-235/Models/Interior/Panel/Instruments/kap140/kap140-proprules.xml</path>
     </systems>
 
     <instrumentation>
@@ -112,7 +113,7 @@
 
   <engines include="engines.xml"/>
 
-  <autopilot include="autopilot.xml"/>
+  <autopilot include="Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kap140/kap140-properties.xml"/>
 
   <nasal>
     <doors>
@@ -134,6 +135,9 @@
     <kr87>
       <file>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kr87-adf/kr87.nas</file>
     </kr87>
+    <kap140>
+      <file>Aircraft/Ryan-Navion/Nasal/kap140.nas</file>
+    </kap140>
   </nasal>
 
 </PropertyList>
