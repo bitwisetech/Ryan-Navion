@@ -2,7 +2,8 @@
 
 <!-- KAP 140 Autopilot -->
 
-<PropertyList include="../Models/Instruments/Avionics/kap140/kap140-config.xml">
+<!--PropertyList include="../Models/Instruments/Avionics/kap140/kap140-config.xml"-->
+<PropertyList include="../Models/Interior/Panel/Instruments/kap140/kap140-config.xml">
 	
 	<!-- Begin Rework 2021 by Josh Davidson (Octal450) -->
 	<!-- Roll Axis -->
