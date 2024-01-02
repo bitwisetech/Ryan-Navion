@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <title>Ryan Navion</title>
+  <line>______________________________________________</line>
+  <key>
+    <name>d</name>
+    <desc>Open/Close bay</desc>
+  </key>
+  <key>
+    <name>shift+d</name>
+    <desc>Open/Close engine doors</desc>
+  </key>
+  <key>
+    <name>c</name>
+    <desc>Control Wheel Steering (CWS)</desc>
+  </key>
+  
+</PropertyList>

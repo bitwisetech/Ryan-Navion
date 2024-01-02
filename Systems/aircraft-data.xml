@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>/sim/model/hide-yoke</path>
+  <path>/sim/model/hide-tank</path>
+  <path>/sim/model/hide-typea</path>
+  <path>/sim/model/hide-cable</path>
+
+</PropertyList>
