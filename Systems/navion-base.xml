@@ -23,11 +23,12 @@
 
     <systems include="rules.xml">
       <path>Aircraft/Ryan-Navion/Systems/systems.xml</path>
-      <path>Aircraft/Lancair-235/Models/Interior/Panel/Instruments/kap140/kap140-proprules.xml</path>
+      <path>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kap140/kap140-proprules.xml</path>
     </systems>
 
     <instrumentation>
       <path>Aircraft/Ryan-Navion/Systems/instrumentation.xml</path>
+      <path>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kns80/kns80-props.xml</path>
     </instrumentation>
 
     <rendering>
@@ -107,6 +108,8 @@
 
   <input include="navion-keyboard.xml"/>
 
+  <systems include="systems2.xml"/>
+
   <controls include="controls.xml"/>
 
   <instrumentation include="initialisation.xml"/>
@@ -126,12 +129,17 @@
       <file>Aircraft/Ryan-Navion/Nasal/Electrical.nas</file>
       <file>Aircraft/Ryan-Navion/Nasal/navion.nas</file>
     </navion>
-    <ki252a>
-      <file>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kfc200/ki252a.nas</file>
-    </ki252a>
     <kns80>
       <file>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kns80/kns80.nas</file>
     </kns80>
+    <kcs55>
+      <file>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kcs55/kcs55.nas</file>
+      <script>
+        <![CDATA[
+          KCS55.new();
+        ]]>
+      </script>
+    </kcs55>
     <kr87>
       <file>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kr87-adf/kr87.nas</file>
     </kr87>

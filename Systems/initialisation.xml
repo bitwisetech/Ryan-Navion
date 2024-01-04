@@ -2,6 +2,12 @@
 
 <PropertyList>
 
+  <kcs55 include="../Models/Interior/Panel/Instruments/kcs55/kcs55.xml">
+    <ka51>
+      <slaved>1</slaved>
+    </ka51>
+  </kcs55>
+
   <elt>
     <on type="bool">false</on>
     <armed type="bool">true</armed>

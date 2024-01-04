@@ -151,7 +151,7 @@
   <model>
     <path>Instruments/kap140/kap140.xml</path>
     <offsets>
-      <x-m> -0.012 </x-m>
+      <x-m> -0.006 </x-m>
       <y-m>  0.229 </y-m>
       <z-m>  0.120 </z-m>
     </offsets>
@@ -161,7 +161,7 @@
   <model>
     <path>Instruments/kx165/kx165-1.xml</path>
     <offsets>
-      <x-m> -0.010 </x-m>
+      <x-m> -0.005 </x-m>
       <y-m>  0.229 </y-m>
       <z-m>  0.067 </z-m>
     </offsets>
@@ -174,10 +174,10 @@
       <!--x-m> 0.012 </x-m-->
       <!--y-m> 0.399 </y-m-->
       <!--z-m> 0.072 </z-m-->
-      <x-m> -0.012 </x-m>
+      <x-m>  0.000012 </x-m>
       <x-m> -0.200052 </x-m>
       <y-m>  0.227 </y-m>
-      <z-m> -0.006 </z-m>
+      <z-m>  0.000 </z-m>
     </offsets>
   </model>
 
@@ -185,17 +185,16 @@
   <model>
     <path>Instruments/kr87-adf/kr87.xml</path>
     <offsets>
-      <x-m> -0.001 </x-m>
+      <x-m>  0.010 </x-m>
       <y-m>  0.229 </y-m>
-      <z-m> -0.071 </z-m>
+      <z-m> -0.075 </z-m>
     </offsets>
   </model>
 
   <model>
     <path>Instruments/kt70/kt70.xml</path>
     <offsets>
-      <property></property>
-      <x-m> 0.001 </x-m>
+      <x-m> 0.007 </x-m>
       <y-m> 0.229 </y-m>
       <z-m>-0.120 </z-m>
     </offsets>
@@ -223,21 +222,11 @@
 
   <!-- KI'252' CDI Bot Mid     -->
   <model>
-    <path>Instruments/kcs55/ki525a.xml</path>
+    <path>Instruments/kfc200/ki252a.xml</path>
     <offsets>
-      <x-m>  0.016 </x-m>
+      <x-m>  0.006 </x-m>
       <y-m> -0.223 </y-m>
       <z-m> -0.025 </z-m>
-    </offsets>
-  </model>
-
-  <!-- Nav Source Selecor Pushbuttons Bot Mid     -->
-  <model>
-    <path>Instruments/nav-srce-pbs/nav-srce-pbs.xml</path>
-    <offsets>
-      <x-m>  0.016 </x-m>
-      <y-m> -0.223 </y-m>
-      <z-m> -0.040 </z-m>
     </offsets>
   </model>
 
