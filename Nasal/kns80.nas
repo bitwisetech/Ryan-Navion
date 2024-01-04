@@ -1,4 +1,4 @@
-var config = io.read_properties("Aircraft/Ryan-Navion-235/Models/Interior/Panel/Instruments/kns80/kns80-config.xml");
+var config = io.read_properties("Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kns80/kns80-config.xml");
 
 var kns80_vor         = props.globals.initNode("instrumentation/kns80/event/button-vor",       0, "BOOL");
 var kns80_rnav        = props.globals.initNode("instrumentation/kns80/event/button-rnav",      0, "BOOL");

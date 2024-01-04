@@ -130,7 +130,7 @@
       <file>Aircraft/Ryan-Navion/Nasal/navion.nas</file>
     </navion>
     <kns80>
-      <file>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kns80/kns80.nas</file>
+      <file>Aircraft/Ryan-Navion/Nasal/kns80.nas</file>
     </kns80>
     <kcs55>
       <file>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kcs55/kcs55.nas</file>
