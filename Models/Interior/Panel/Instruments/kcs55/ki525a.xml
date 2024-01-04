@@ -22,7 +22,7 @@
     <nav-flag>instrumentation/kcs55/ki525/nav-flag</nav-flag>
 
     <indicated-heading>orientation/heading-magnetic-deg</indicated-heading>
-    <hdg-flag>instrumentation/kcs55/kg102/flag-norm</hdg-flag>
+    <hdg-flag>instrumentation/heading-indicator/serviceable</hdg-flag>
 
     <heading-bug>autopilot/settings/heading-bug-deg</heading-bug>
   </params>
@@ -342,8 +342,8 @@
     <object-name>HDG</object-name>
     <property alias="../../params/hdg-flag"/>
     <interpolation>
-      <entry><ind> 0 </ind><dep> -40 </dep></entry>
-      <entry><ind> 1 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> -40 </dep></entry>
     </interpolation>
     <center>
       <x-m> -0.00202 </x-m>
