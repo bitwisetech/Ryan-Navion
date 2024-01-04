@@ -194,7 +194,6 @@
   <model>
     <path>Instruments/kt70/kt70.xml</path>
     <offsets>
-      <property></property>
       <x-m> 0.001 </x-m>
       <y-m> 0.229 </y-m>
       <z-m>-0.120 </z-m>
