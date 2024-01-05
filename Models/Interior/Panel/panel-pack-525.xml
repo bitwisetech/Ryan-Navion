@@ -151,7 +151,7 @@
   <model>
     <path>Instruments/kap140/kap140.xml</path>
     <offsets>
-      <x-m> -0.012 </x-m>
+      <x-m> -0.007 </x-m>
       <y-m>  0.229 </y-m>
       <z-m>  0.120 </z-m>
     </offsets>
@@ -161,9 +161,9 @@
   <model>
     <path>Instruments/kx165/kx165-1.xml</path>
     <offsets>
-      <x-m> -0.010 </x-m>
+      <x-m> -0.005 </x-m>
       <y-m>  0.229 </y-m>
-      <z-m>  0.067 </z-m>
+      <z-m>  0.065 </z-m>
     </offsets>
   </model>
 
@@ -171,12 +171,8 @@
   <model>
     <path>Instruments/kns80/kns80.xml</path>
     <offsets>
-      <!--x-m> 0.012 </x-m-->
-      <!--y-m> 0.399 </y-m-->
-      <!--z-m> 0.072 </z-m-->
-      <x-m> -0.012 </x-m>
-      <x-m> -0.200052 </x-m>
-      <y-m>  0.227 </y-m>
+      <x-m> -0.007 </x-m>
+      <y-m>  0.229 </y-m>
       <z-m> -0.006 </z-m>
     </offsets>
   </model>
@@ -185,18 +181,18 @@
   <model>
     <path>Instruments/kr87-adf/kr87.xml</path>
     <offsets>
-      <x-m> -0.001 </x-m>
+      <x-m>  0.005 </x-m>
       <y-m>  0.229 </y-m>
-      <z-m> -0.071 </z-m>
+      <z-m> -0.070 </z-m>
     </offsets>
   </model>
 
   <model>
     <path>Instruments/kt70/kt70.xml</path>
     <offsets>
-      <x-m> 0.001 </x-m>
+      <x-m> 0.005 </x-m>
       <y-m> 0.229 </y-m>
-      <z-m>-0.120 </z-m>
+      <z-m>-0.118 </z-m>
     </offsets>
   </model>
 
