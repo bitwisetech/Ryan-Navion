@@ -11,10 +11,12 @@
   <path>ki525a.ac</path>
 
   <params>
-    <has-gs>instrumentation/nav[0]/has-gs</has-gs>
+  
+    <has-gs>instrumentation/nav-source/has-gs</has-gs>
+    <gs-needle-deflection>instrumentation/nav-source/gs-needle-deflection</gs-needle-deflection>
 
-    <gs-needle-deflection>instrumentation/kcs55/ki525/gs-deflection</gs-needle-deflection>
-    <cdi-needle-deflection>instrumentation/kcs55/ki525/cdi-deflection</cdi-needle-deflection>
+    <cdi-needle-deflection>instrumentation/nav-source/heading-needle-deflection-norm</cdi-needle-deflection>
+
     <selected-heading>instrumentation/kcs55/ki525/selected-heading-deg</selected-heading>
     <selected-course>instrumentation/kcs55/ki525/selected-course-deg</selected-course>
     <to-flag>instrumentation/kcs55/ki525/to-flag</to-flag>
@@ -385,7 +387,10 @@
     <type>translate</type>
     <object-name>GS</object-name>
     <property alias="../../params/gs-needle-deflection"/>
-    <factor>0.004535342857142857143</factor>
+    <!--  bitw wip    -->
+    <!--factor>0.004535342857142857143</factor-->
+    <offset-m>-0.022</offset-m>
+    <factor>0.005</factor>
     <axis>
       <x> 0 </x>
       <y> 0 </y>
@@ -413,7 +418,8 @@
     <type>translate</type>
     <object-name>ArrowBody</object-name>
     <property alias="../../params/cdi-needle-deflection"/>
-    <!-- factor>2.5</factor -->
+    <!--  bitw    -->
+    <!--factor>2.5</factor-->
     <factor>0.02</factor>
     <axis>
       <x> 0 </x>
