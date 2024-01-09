@@ -747,14 +747,16 @@
     <name>LaVerriere</name>
     <object-name>canope</object-name>
     <object-name>verriere</object-name>
-    <object-name>poignees_dessus</object-name>
     <object-name>entrevitres</object-name>
+    <object-name>poignees_dessus</object-name>
     <object-name>barrecanope</object-name>
   </animation>
 
   <animation>
     <type>pick</type>
     <object-name>LaVerriere</object-name>
+    <object-name>HDRverriere</object-name>
+    <object-name>HDRentrevitres</object-name>
     <visible>true</visible>
     <action>
       <button>0</button>
@@ -780,6 +782,8 @@
   <animation>
     <type>translate</type>
     <object-name>LaVerriere</object-name>
+    <object-name>HDRverriere</object-name>
+    <object-name>HDRentrevitres</object-name>
     <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0 </ind><dep> 0.0 </dep></entry>
@@ -795,6 +799,8 @@
   <animation>
     <type>translate</type>
     <object-name>LaVerriere</object-name>
+    <object-name>HDRverriere</object-name>
+    <object-name>HDRentrevitres</object-name>
     <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0 </ind><dep> 0.00 </dep></entry>

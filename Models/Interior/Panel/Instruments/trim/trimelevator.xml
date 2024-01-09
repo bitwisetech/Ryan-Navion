@@ -8,6 +8,7 @@
     <!-- Objets opaques -->
     <object-name>base</object-name>
     <object-name>TrimElevador</object-name>
+    <object-name>texte</object-name>
 
     <!-- Objets transparents -->
   </animation>
@@ -16,6 +17,7 @@
     <type>noshadow</type>
     <object-name>base</object-name>
     <object-name>TrimElevador</object-name>
+    <object-name>texte</object-name>
   </animation>
 
   <!-- Elevator trim -->

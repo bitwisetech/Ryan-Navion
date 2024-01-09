@@ -2,11 +2,11 @@
 ####    Syd Adams    ####
 
 var ammeter_ave = 0.0;
-var outPut = "systems/electrical/outputs/";
-var BattVolts = props.globals.getNode("systems/electrical/batt-volts",1);
-var Volts = props.globals.getNode("/systems/electrical/volts",1);
-var Amps = props.globals.getNode("/systems/electrical/amps",1);
-var EXT  = props.globals.getNode("/controls/electric/external-power",1);
+var outPut      = "systems/electrical/outputs/";
+var BattVolts   = props.globals.getNode("systems/electrical/batt-volts",1);
+var Volts       = props.globals.getNode("/systems/electrical/volts",1);
+var Amps        = props.globals.getNode("/systems/electrical/amps",1);
+var EXT         = props.globals.getNode("/controls/electric/external-power",1);
 var switch_list=[];
 var output_list=[];
 var watt_list=[];
@@ -17,20 +17,21 @@ Battery = {
     m = { parents : [Battery] };
     m.switch = props.globals.getNode(swtch,1);
     m.switch.setBoolValue(0);
-    m.ideal_volts = vlt;
-    m.ideal_amps = amp;
-    m.amp_hours = hr;
+    m.ideal_volts    = vlt;
+    m.ideal_amps     = amp;
+    m.amp_hours      = hr;
     m.charge_percent = chp;
-    m.charge_amps = cha;
+    m.charge_amps    = cha;
     return m;
   },
+
   apply_load : func(load,dt) {
     if (me.switch.getValue()) {
-      var amphrs_used = load * dt / 3600.0;
-      var percent_used = amphrs_used / me.amp_hours;
+      var amphrs_used    = load * dt / 3600.0;
+      var percent_used   = amphrs_used / me.amp_hours;
       me.charge_percent -= percent_used;
       if ( me.charge_percent < 0.0 ) {
-          me.charge_percent = 0.0;
+        me.charge_percent = 0.0;
       } elsif ( me.charge_percent > 1.0 ) {
         me.charge_percent = 1.0;
       }
@@ -43,10 +44,10 @@ Battery = {
 
   get_output_volts : func {
     if (me.switch.getValue()) {
-      var x = 1.0 - me.charge_percent;
-      var tmp = -(3.0 * x - 1.0);
+      var x      = 1.0 - me.charge_percent;
+      var tmp    = -(3.0 * x - 1.0);
       var factor = (tmp*tmp*tmp*tmp*tmp + 32) / 32;
-      var output =me.ideal_volts * factor;
+      var output = me.ideal_volts * factor;
       return output;
     } else {
       return 0;
@@ -55,10 +56,10 @@ Battery = {
 
   get_output_amps : func {
     if (me.switch.getValue()) {
-      var x = 1.0 - me.charge_percent;
-      var tmp = -(3.0 * x - 1.0);
+      var x      = 1.0 - me.charge_percent;
+      var tmp    = -(3.0 * x - 1.0);
       var factor = (tmp*tmp*tmp*tmp*tmp + 32) / 32;
-      var output =me.ideal_amps * factor;
+      var output = me.ideal_amps * factor;
       return output;
     } else {
       return 0;
@@ -251,7 +252,7 @@ update_virtual_bus = func( dt ) {
   ammeter = 0.0;
 
   if ( power_source == "battery" ) {
-      ammeter = -load;
+    ammeter = -load;
   } else {
     ammeter = battery.charge_amps;
   }
@@ -273,18 +274,18 @@ update_virtual_bus = func( dt ) {
 
 electrical_bus = func(bv) {
   var bus_volts = bv;
-  var load = 0.0;
-  var srvc = 0.0;
+  var load      = 0.0;
+  var srvc      = 0.0;
 
-  for(var i=0; i<size(switch_list); i+=1) {
+  for (var i = 0; i<size(switch_list); i+=1) {
     var srvc = getprop(switch_list[i]);
     load = load + srvc * watt_list[i];
     setprop(outPut~output_list[i],bus_volts * srvc);
   }
 
-  var DIMMER = bus_volts * getprop("controls/lighting/instrument-lights-norm");
+  var DIMMER      = bus_volts * getprop("controls/lighting/instrument-lights-norm");
   var INSTR_SWTCH = getprop("controls/lighting/instrument-lights");
-  DIMMER=DIMMER*INSTR_SWTCH;
+  DIMMER          = DIMMER * INSTR_SWTCH;
 
   setprop(outPut~"instrument-lights",DIMMER);
   setprop(outPut~"instrument-lights-norm",DIMMER * 0.0357);

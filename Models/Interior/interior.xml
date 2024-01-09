@@ -89,57 +89,11 @@
   </model>
 
   <model>
-    <path>Panel/Instruments/ParkBrake/parkbrake.xml</path>
-    <offsets>
-      <x-m> -2.24570 </x-m>
-      <y-m>  0.00000 </y-m>
-      <z-m> -0.42327 </z-m>
-      <pitch-deg> 21 </pitch-deg>
-    </offsets>
+    <path>Panel/Instruments/ParkBrake/all-parkbrake.xml</path>
   </model>
 
   <model>
-    <path>Panel/Instruments/divers/ceniceros.xml</path>
-    <offsets>
-      <x-m> -2.01600 </x-m>
-      <y-m> -0.57519 </y-m>
-      <z-m>  0.13187 </z-m>
-      <pitch-deg>    6.0 </pitch-deg>
-      <heading-deg> 88.5 </heading-deg>
-    </offsets>
-  </model>
-
-  <model>
-    <path>Panel/Instruments/divers/airconditioner.xml</path>
-    <offsets>
-      <x-m> -2.09453 </x-m>
-      <y-m> -0.55953 </y-m>
-      <z-m>  0.22297 </z-m>
-      <pitch-deg>   22 </pitch-deg>
-      <heading-deg> 90 </heading-deg>
-    </offsets>
-  </model>
-
-  <model>
-    <path>Panel/Instruments/divers/ceniceros.xml</path>
-    <offsets>
-      <x-m> -2.01600 </x-m>
-      <y-m>  0.57519 </y-m>
-      <z-m>  0.13187 </z-m>
-      <pitch-deg>     6.0 </pitch-deg>
-      <heading-deg> -88.5 </heading-deg>
-    </offsets>
-  </model>
-
-  <model>
-    <path>Panel/Instruments/divers/airconditioner.xml</path>
-    <offsets>
-      <x-m> -2.09453 </x-m>
-      <y-m>  0.55953 </y-m>
-      <z-m>  0.22297 </z-m>
-      <pitch-deg>    22 </pitch-deg>
-      <heading-deg> -90 </heading-deg>
-    </offsets>
+    <path>Panel/Instruments/divers/all-ceniceros-air.xml</path>
   </model>
 
   <!-- Canopy -->
@@ -155,6 +109,8 @@
   <animation>
     <type>pick</type>
     <object-name>IntLaVerriere</object-name>
+    <object-name>HDRintverriere</object-name>
+    <object-name>HDRintentrevitres</object-name>
     <visible>true</visible>
     <action>
       <button>0</button>
@@ -180,6 +136,8 @@
   <animation>
     <type>translate</type>
     <object-name>IntLaVerriere</object-name>
+    <object-name>HDRintverriere</object-name>
+    <object-name>HDRintentrevitres</object-name>
     <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0 </ind><dep> 0.0 </dep></entry>
@@ -195,6 +153,8 @@
   <animation>
     <type>translate</type>
     <object-name>IntLaVerriere</object-name>
+    <object-name>HDRintverriere</object-name>
+    <object-name>HDRintentrevitres</object-name>
     <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0 </ind><dep> 0.00 </dep></entry>

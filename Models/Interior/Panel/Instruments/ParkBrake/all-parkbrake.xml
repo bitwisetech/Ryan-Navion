@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <model>
+    <path>parkbrake.xml</path>
+    <offsets>
+      <x-m> -2.24570 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> -0.42327 </z-m>
+      <pitch-deg> 21 </pitch-deg>
+    </offsets>
+  </model>
+
+</PropertyList>
