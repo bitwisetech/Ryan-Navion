@@ -3,12 +3,21 @@
 <PropertyList>
 
   <model>
+    <name>whitelightNOALS</name>
     <path>Classic/WhiteLight.xml</path>
   </model>
 
+  <animation>
+    <type>select</type>
+    <object-name>whitelightNOALS</object-name>
+    <condition>
+      <not><property>/sim/rendering/shaders/skydome</property></not>
+    </condition>
+  </animation>
+
   <model>
     <name>whitelightALS</name>
-    <path>Procedural/WhiteLight.xml</path>
+    <path>ALS/WhiteLight.xml</path>
   </model>
 
   <animation>
@@ -16,6 +25,19 @@
     <object-name>whitelightALS</object-name>
     <condition>
       <property>/sim/rendering/shaders/skydome</property>
+    </condition>
+  </animation>
+
+  <model>
+    <name>whitelightHDR</name>
+    <path>HDR/WhiteLight.xml</path>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>whitelightHDR</object-name>
+    <condition>
+      <property>/sim/rendering/hdr/hdr-enabled</property>
     </condition>
   </animation>
 

@@ -3,12 +3,21 @@
 <PropertyList>
 
   <model>
+    <name>greenlightNOALS</name>
     <path>Classic/GreenLight.xml</path>
   </model>
 
+  <animation>
+    <type>select</type>
+    <object-name>greenlightNOALS</object-name>
+    <condition>
+      <not><property>/sim/rendering/shaders/skydome</property></not>
+    </condition>
+  </animation>
+
   <model>
     <name>greenlightALS</name>
-    <path>Procedural/GreenLight.xml</path>
+    <path>ALS/GreenLight.xml</path>
   </model>
 
   <animation>
@@ -16,6 +25,19 @@
     <object-name>greenlightALS</object-name>
     <condition>
       <property>/sim/rendering/shaders/skydome</property>
+    </condition>
+  </animation>
+
+  <model>
+    <name>greenlightHDR</name>
+    <path>HDR/GreenLight.xml</path>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>greenlightHDR</object-name>
+    <condition>
+      <property>/sim/rendering/hdr/hdr-enabled</property>
     </condition>
   </animation>
 

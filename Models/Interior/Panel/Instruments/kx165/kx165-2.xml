@@ -4,7 +4,7 @@
 
   <!--
   Bendix/King KX155/165 COMM/NAV radio
-  Use this instrument as COMM2/NAV2 radio
+  Use this instrument as COMM1/NAV1 radio
 
   Created by Torsten Dreyer, October 2008
 
@@ -29,7 +29,8 @@
   <params>
     <comm-serviceable>instrumentation/comm[1]/serviceable</comm-serviceable>
     <nav-serviceable>instrumentation/nav[1]/serviceable</nav-serviceable>
-    <power>instrumentation/nav[1]/power-btn</power>
+    <power-nav>instrumentation/nav[1]/power-btn</power-nav>
+    <power-comm>instrumentation/comm[1]/power-btn</power-comm>
 
     <comm-frq-swp>instrumentation/comm[1]/frq-swap-btn</comm-frq-swp>
     <comm-frq-selected>instrumentation/comm[1]/frequencies/selected-mhz</comm-frq-selected>
@@ -216,7 +217,7 @@
       <property>controls/electric/battery-switch</property>
     </condition>
     <emission>
-      <factor-prop>controls/lighting/luminosite-lights</factor-prop>
+      <factor-prop>controls/lighting/instruments-norm</factor-prop>
       <red>   0.50 </red>
       <green> 0.40 </green>
       <blue>  0.30 </blue>

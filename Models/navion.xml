@@ -12,23 +12,9 @@
   <nasal>
     <load>
       var livery_update = aircraft.livery_update.new("Liveries", 10);
-
-      var self = cmdarg();
-
-      var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
-      var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
-
-      var crew_door = self.getNode("sim/model/door-positions/crew/position-norm", 1);
-      var passenger_door = self.getNode("sim/model/door-positions/passenger/position-norm", 1);
-
-      crew_door       .alias(self.getNode ("sim/multiplay/generic/float[0]"));
-      passenger_door  .alias(self.getNode ("sim/multiplay/generic/float[1]"));
     </load>
-
     <unload>
       livery_update.stop();
-      crew_door.unalias();
-      passenger_door.unalias();
     </unload>
   </nasal>
 
@@ -92,6 +78,10 @@
     <object-name>lampegreen</object-name>
     <object-name>propblur</object-name>
     <object-name>propdisc</object-name>
+    <!-- HDR mode -->
+    <object-name>HDRvitres</object-name>
+    <object-name>HDRverriere</object-name>
+    <object-name>HDRentrevitres</object-name>
   </animation>
 
   <animation>
@@ -183,7 +173,7 @@
     <object-name>lightWheelright</object-name>
   </effect>
 
-  <!-- ALS glass effect -->
+  <!-- working for Compositor -->
   <effect>
     <inherits-from>Effects/Glass/glassrain</inherits-from>
     <object-name>vitres</object-name>
@@ -192,82 +182,62 @@
   </effect>
 
   <effect>
+    <inherits-from>../Effects/Glass/greenglass</inherits-from>
+    <object-name>HDRvitres</object-name>
+    <object-name>HDRverriere</object-name>
+    <object-name>HDRentrevitres</object-name>
+  </effect>
+
+  <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>lampedir</object-name>
     <object-name>lampederive</object-name>
     <object-name>lampered</object-name>
     <object-name>lampegreen</object-name>
-    <object-name>helice</object-name>
     <object-name>propblur</object-name>
     <object-name>propdisc</object-name>
   </effect>
 
-  <!-- Interieur -->
+  <!-- Sélection des vitres en fonction de HDR ou pas -->
+  <animation>
+    <type>select</type>
+    <condition>
+      <property>/sim/rendering/hdr/hdr-enabled</property>
+    </condition>
+    <object-name>HDRvitres</object-name>
+    <object-name>HDRverriere</object-name>
+    <object-name>HDRentrevitres</object-name>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <condition>
+      <not><property>/sim/rendering/hdr/hdr-enabled</property></not>
+    </condition>
+    <object-name>vitres</object-name>
+    <object-name>verriere</object-name>
+    <object-name>entrevitres</object-name>
+  </animation>
+
+  <!-- ************************************************ -->
   <model>
     <path>Interior/interior.xml</path>
   </model>
 
-  <!-- Le moteur -->
   <model>
-    <path>Engine/continental.xml</path>
-    <offsets>
-      <x-m> -3.294 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -0.110 </z-m>
-    </offsets>
-  </model>
-
-  <!-- Cranking effects -->
-  <!-- Left -->
-  <model>
-    <path>Effects/cranking/cranking.xml</path>
-    <offsets>
-      <x-m> -2.72130 </x-m>
-      <y-m> -0.39779 </y-m>
-      <z-m> -0.66180 </z-m>
-      <pitch-deg> 50 </pitch-deg>
-    </offsets>
+    <path>Engine/all-engines.xml</path>
   </model>
 
   <model>
-    <path>Effects/cranking/cranking.xml</path>
-    <offsets>
-      <x-m> -2.72130 </x-m>
-      <y-m>  0.39779 </y-m>
-      <z-m> -0.66180 </z-m>
-      <pitch-deg> 50 </pitch-deg>
-    </offsets>
+    <path>Effects/cranking/all-crankings.xml</path>
   </model>
 
-  <!-- Effets sur le sol -->
-  <!-- Roue avant -->
   <model>
-    <path>Effects/ground/ground0.xml</path>
-    <offsets>
-      <x-m> -3.093 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.399 </z-m>
-    </offsets>
+    <path>Effects/ground/all-ground.xml</path>
   </model>
 
-  <!-- Roue gauche -->
   <model>
-    <path>Effects/ground/ground1.xml</path>
-    <offsets>
-      <x-m> -1.487 </x-m>
-      <y-m> -1.336 </y-m>
-      <z-m> -1.400 </z-m>
-    </offsets>
-  </model>
-
-  <!-- Roue droite -->
-  <model>
-    <path>Effects/ground/ground2.xml</path>
-    <offsets>
-      <x-m> -1.487 </x-m>
-      <y-m>  1.336 </y-m>
-      <z-m> -1.400 </z-m>
-    </offsets>
+    <path>light/all-lights.xml</path>
   </model>
 
   <!-- L'hélice -->
@@ -429,260 +399,6 @@
       <y> 1 </y>
       <z> 0 </z>
     </axis>
-  </animation>
-
-  <!-- Effets lumineux -->
-  <model>
-    <path>light/beacon.xml</path>
-    <offsets>
-      <x-m> 3.407 </x-m>
-      <y-m> 0.000 </y-m>
-      <z-m> 1.401 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>LampeBlancheDirection</name>
-    <condition>
-      <not><property>sim/rendering/shaders/skydome</property></not>
-    </condition>
-    <path>light/WhiteLight.xml</path>
-    <offsets>
-      <x-m>  4.125 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -0.058 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>LampeBlancheDirection_ALS</name>
-    <condition>
-      <property>sim/rendering/shaders/skydome</property>
-    </condition>
-    <path>light/WhiteLight_ALS.xml</path>
-    <offsets>
-      <x-m>  4.125 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -0.058 </z-m>
-    </offsets>
-  </model>
-
-  <!-- tip wings -->
-  <model>
-    <name>RedLightWithoutTank</name>
-    <condition>
-      <not><property>sim/rendering/shaders/skydome</property></not>
-    </condition>
-    <path>light/RedLight.xml</path>
-    <offsets>
-      <x-m> -1.651 </x-m>
-      <y-m> -5.026 </y-m>
-      <z-m>  0.015 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>RedLightWithoutTank_ALS</name>
-    <condition>
-      <property>sim/rendering/shaders/skydome</property>
-    </condition>
-    <path>light/RedLight_ALS.xml</path>
-    <offsets>
-      <x-m> -1.651 </x-m>
-      <y-m> -5.026 </y-m>
-      <z-m>  0.015 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>RedLightWithTank</name>
-    <condition>
-      <not><property>sim/rendering/shaders/skydome</property></not>
-    </condition>
-    <path>light/RedLight.xml</path>
-    <offsets>
-      <x-m> -1.6510 </x-m>
-      <y-m> -5.2351 </y-m>
-      <z-m>  0.0150 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>RedLightWithTank_ALS</name>
-    <condition>
-      <property>sim/rendering/shaders/skydome</property>
-    </condition>
-    <path>light/RedLight_ALS.xml</path>
-    <offsets>
-      <x-m> -1.6510 </x-m>
-      <y-m> -5.2351 </y-m>
-      <z-m>  0.0150 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>StrobeLighLefttWithoutTank</name>
-    <path>light/StrobeLight.xml</path>
-    <offsets>
-      <x-m> -1.651 </x-m>
-      <y-m> -5.026 </y-m>
-      <z-m>  0.015 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>StrobeLighLeftWithTank</name>
-    <path>light/StrobeLight.xml</path>
-    <offsets>
-      <x-m> -1.6510 </x-m>
-      <y-m> -5.2351 </y-m>
-      <z-m>  0.0150 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>GreenLightWithoutTank</name>
-    <condition>
-      <not><property>sim/rendering/shaders/skydome</property></not>
-    </condition>
-    <path>light/GreenLight.xml</path>
-    <offsets>
-      <x-m> -1.671 </x-m>
-      <y-m>  5.026 </y-m>
-      <z-m>  0.015 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>GreenLightWithoutTank_ALS</name>
-    <condition>
-      <property>sim/rendering/shaders/skydome</property>
-    </condition>
-    <path>light/GreenLight_ALS.xml</path>
-    <offsets>
-      <x-m> -1.671 </x-m>
-      <y-m>  5.026 </y-m>
-      <z-m>  0.015 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>GreenLightWithTank</name>
-    <condition>
-      <not><property>sim/rendering/shaders/skydome</property></not>
-    </condition>
-    <path>light/GreenLight.xml</path>
-    <offsets>
-      <x-m> -1.6710 </x-m>
-      <y-m>  5.2351 </y-m>
-      <z-m>  0.0150 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>GreenLightWithTank_ALS</name>
-    <condition>
-      <property>sim/rendering/shaders/skydome</property>
-    </condition>
-    <path>light/GreenLight_ALS.xml</path>
-    <offsets>
-      <x-m> -1.6710 </x-m>
-      <y-m>  5.2351 </y-m>
-      <z-m>  0.0150 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>StrobeLighRightWithoutTank</name>
-    <path>light/StrobeLight.xml</path>
-    <offsets>
-      <x-m> -1.651 </x-m>
-      <y-m>  5.026 </y-m>
-      <z-m>  0.015 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <name>StrobeLighRightWithTank</name>
-    <path>light/StrobeLight.xml</path>
-    <offsets>
-      <x-m> -1.651 </x-m>
-      <y-m>  5.026 </y-m>
-      <z-m>  0.015 </z-m>
-    </offsets>
-  </model>
-
-  <animation>
-    <type>select</type>
-    <object-name>RedLightWithoutTank</object-name>
-    <object-name>RedLightWithoutTank_ALS</object-name>
-    <object-name>StrobeLighLeftWithoutTank</object-name>
-    <object-name>GreenLightWithoutTank</object-name>
-    <object-name>GreenLightWithoutTank_ALS</object-name>
-    <object-name>StrobeLighRightWithoutTank</object-name>
-    <condition>
-      <not>
-        <property>sim/model/hide-tank</property>
-      </not>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>RedLightWithTank</object-name>
-    <object-name>RedLightWithTank_ALS</object-name>
-    <object-name>StrobeLighLeftWithTank</object-name>
-    <object-name>GreenLightWithTank</object-name>
-    <object-name>GreenLightWithTank_ALS</object-name>
-    <object-name>StrobeLighRightWithTank</object-name>
-    <condition>
-      <property>sim/model/hide-tank</property>
-    </condition>
-  </animation>
-
-  <!-- Gear light cone -->
-  <model>
-    <name>LightConeLeft</name>
-    <path>light/light-cone.xml</path>
-    <offsets>
-      <x-m> -1.479 </x-m>
-      <y-m> -1.170 </y-m>
-      <z-m> -0.839 </z-m>
-      <pitch-deg>-3.5</pitch-deg>
-    </offsets>
-  </model>
-
-  <animation>
-    <type>select</type>
-    <object-name>LightConeLeft</object-name>
-    <condition>
-      <equals>
-        <property>gear/gear[1]/position-norm</property>
-        <value>1</value>
-      </equals>
-    </condition>
-  </animation>
-
-  <model>
-    <name>LightConeRight</name>
-    <path>light/light-cone.xml</path>
-    <offsets>
-      <x-m> -1.479 </x-m>
-      <y-m>  1.170 </y-m>
-      <z-m> -0.839 </z-m>
-      <pitch-deg>-3.5</pitch-deg>
-    </offsets>
-  </model>
-
-  <animation>
-    <type>select</type>
-    <object-name>LightConeRight</object-name>
-    <condition>
-      <equals>
-        <property>gear/gear[2]/position-norm</property>
-        <value>1</value>
-      </equals>
-    </condition>
   </animation>
 
   <!-- Gouverne de direction -->
@@ -1044,6 +760,17 @@
       <button>0</button>
       <repeatable>false</repeatable>
       <binding>
+        <condition>
+          <and>
+            <property>/gear/gear[0]/wow</property>
+            <property>/gear/gear[1]/wow</property>
+            <property>/gear/gear[2]/wow</property>
+            <less-than>
+              <property>/gear/gear[0]/rollspeed-ms</property>
+              <value>10</value>
+            </less-than>
+          </and>
+        </condition>
         <command>nasal</command>
         <script>doors.crew.toggle();</script>
       </binding>
@@ -1091,7 +818,16 @@
       <repeatable>false</repeatable>
       <binding>
         <condition>
-          <not><property>sim/current-view/internal</property></not>
+          <and>
+            <not><property>sim/current-view/internal</property></not>
+            <property>/gear/gear[0]/wow</property>
+            <property>/gear/gear[1]/wow</property>
+            <property>/gear/gear[2]/wow</property>
+            <less-than>
+              <property>/gear/gear[0]/rollspeed-ms</property>
+              <value>10</value>
+            </less-than>
+          </and>
         </condition>
         <command>nasal</command>
         <script>doors.passenger.toggle();</script>

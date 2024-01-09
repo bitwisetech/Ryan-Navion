@@ -13,8 +13,8 @@ var watt_list=[];
 
 #var battery = Battery.new(switch-prop,volts,amps,amp_hours,charge_percent,charge_amps);
 Battery = {
-  new : func(swtch,vlt,amp,hr,chp,cha){
-  m = { parents : [Battery] };
+  new : func(swtch,vlt,amp,hr,chp,cha) {
+    m = { parents : [Battery] };
     m.switch = props.globals.getNode(swtch,1);
     m.switch.setBoolValue(0);
     m.ideal_volts = vlt;
@@ -25,24 +25,24 @@ Battery = {
     return m;
   },
   apply_load : func(load,dt) {
-    if(me.switch.getValue()) {
+    if (me.switch.getValue()) {
       var amphrs_used = load * dt / 3600.0;
       var percent_used = amphrs_used / me.amp_hours;
       me.charge_percent -= percent_used;
       if ( me.charge_percent < 0.0 ) {
-        me.charge_percent = 0.0;
+          me.charge_percent = 0.0;
       } elsif ( me.charge_percent > 1.0 ) {
         me.charge_percent = 1.0;
       }
       var output =me.amp_hours * me.charge_percent;
       return output;
-    } else {
+    }else {
       return 0;
     }
   },
 
   get_output_volts : func {
-    if ( me.switch.getValue() ) {
+    if (me.switch.getValue()) {
       var x = 1.0 - me.charge_percent;
       var tmp = -(3.0 * x - 1.0);
       var factor = (tmp*tmp*tmp*tmp*tmp + 32) / 32;
@@ -54,7 +54,7 @@ Battery = {
   },
 
   get_output_amps : func {
-    if (me.switch.getValue() ) {
+    if (me.switch.getValue()) {
       var x = 1.0 - me.charge_percent;
       var tmp = -(3.0 * x - 1.0);
       var factor = (tmp*tmp*tmp*tmp*tmp + 32) / 32;
@@ -87,26 +87,26 @@ Alternator = {
   apply_load : func(load) {
     var cur_volt=me.gen_output.getValue();
     var cur_amp=me.meter.getValue();
-    if ( cur_volt >1 ) {
+    if (cur_volt >1) {
       var factor=1/cur_volt;
       gout = (load * factor);
-      if ( gout>1 ) {
+      if (gout>1) {
         gout=1;
       }
     } else {
       gout=0;
     }
-    if ( cur_amp > gout ) {
+    if (cur_amp > gout) {
       me.meter.setValue(cur_amp - 0.01);
     }
-    if ( cur_amp < gout ) {
+    if (cur_amp < gout) {
       me.meter.setValue(cur_amp + 0.01);
     }
   },
 
   get_output_volts : func {
     var out = 0;
-    if ( me.switch.getBoolValue() ) {
+    if (me.switch.getBoolValue()) {
       var factor = me.rpm_source.getValue() / me.rpm_threshold;
       if ( factor > 1.0 ) {
         factor = 1.0;
@@ -119,7 +119,7 @@ Alternator = {
 
   get_output_amps : func {
     var ampout =0;
-    if(me.switch.getBoolValue()){
+    if(me.switch.getBoolValue()) {
       var factor = me.rpm_source.getValue() / me.rpm_threshold;
       if ( factor > 1.0 ) {
         factor = 1.0;
@@ -130,8 +130,8 @@ Alternator = {
   }
 };
 
-var battery = Battery.new("/controls/electric/battery-switch",24,30,34,1.0,7.0);
-var alternator1 = Alternator.new(0,"controls/electric/engine[0]/generator","/engines/engine[0]/rpm",100.0,28.0,60.0);
+var battery = Battery.new("/controls/electric/battery-switch",28, 90, 120, 1, 90);
+var alternator1 = Alternator.new(0,"controls/electric/engine[0]/generator","/engines/engine[0]/rpm", 350, 28, 120);
 
 #####################################
 setlistener("/sim/signals/fdm-initialized", func {
@@ -139,7 +139,6 @@ setlistener("/sim/signals/fdm-initialized", func {
   init_switches();
   settimer(update_electrical,5);
   print("Electrical System ... ok");
-
 });
 
 init_switches = func() {
@@ -149,6 +148,7 @@ init_switches = func() {
   tprop.setBoolValue(0);
 
   setprop("controls/lighting/instrument-lights-norm",0.8);
+  setprop("controls/lighting/instruments-norm",0.8);
 
   append(switch_list,"controls/engines/engine/starter");
   append(output_list,"starter");
@@ -161,10 +161,6 @@ init_switches = func() {
   append(switch_list,"controls/lighting/landing-lights");
   append(output_list,"landing-lights");
   append(watt_list,1.0);
-
-#  append(switch_list,"controls/lighting/instrument-lights");
-#  append(output_list,"instrument-lights");
-#  append(watt_list,0.2);
 
   append(switch_list,"controls/lighting/beacon-state/state");
   append(output_list,"beacon");
@@ -190,10 +186,6 @@ init_switches = func() {
   append(output_list,"dme");
   append(watt_list,0.2);
 
-#  append(switch_list,"controls/electric/avionics-switch");
-#  append(output_list,"gps");
-#  append(watt_list,0.5);
-
   append(switch_list,"controls/electric/avionics-switch");
   append(output_list,"DG");
   append(watt_list,0.2);
@@ -201,14 +193,6 @@ init_switches = func() {
   append(switch_list,"controls/electric/avionics-switch");
   append(output_list,"transponder");
   append(watt_list,0.2);
-
-#  append(switch_list,"controls/electric/avionics-switch");
-#  append(output_list,"mk-viii");
-#  append(watt_list,0.2);
-
-#  append(switch_list,"controls/electric/avionics-switch");
-#  append(output_list,"tacan");
-#  append(watt_list,0.2);
 
   append(switch_list,"controls/electric/avionics-switch");
   append(output_list,"turn-coordinator");
@@ -218,17 +202,9 @@ init_switches = func() {
   append(output_list,"comm[0]");
   append(watt_list,0.2);
 
-#  append(switch_list,"controls/electric/avionics-switch");
-#  append(output_list,"comm[1]");
-#  append(watt_list,0.2);
-
   append(switch_list,"controls/electric/avionics-switch");
   append(output_list,"nav[0]");
   append(watt_list,0.2);
-
-#  append(switch_list,"controls/electric/avionics-switch");
-#  append(output_list,"nav[1]");
-#  append(watt_list,0.2);
 
   append(switch_list,"controls/electric/avionics-switch");
   append(output_list,"autopilot");
@@ -275,7 +251,7 @@ update_virtual_bus = func( dt ) {
   ammeter = 0.0;
 
   if ( power_source == "battery" ) {
-    ammeter = -load;
+      ammeter = -load;
   } else {
     ammeter = battery.charge_amps;
   }

@@ -7,7 +7,7 @@
     <description>Ryan Super Navion 260 (YASim)</description>
     <author>Emmanuel BARANGER (3D/FDM) / Samaliet (Panel/System) / Sascha Reißner (KAP140 and more) </author>
 
-    <aircraft-version>0.6</aircraft-version>
+    <aircraft-version>0.7</aircraft-version>
     <status>Alpha</status>
     <minimum-fg-version>2018.2.0</minimum-fg-version>
 

@@ -1,13 +1,61 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
-<!--
-    Bendix/King KNS80
-    RNAV System with integrated VOR and DME radio
-    Sascha Reißner 2019
+<!-- Bendix/King KNS80
+     RNAV System with integrated VOR and DME radio
+     Sascha Reißner 2019
 -->
 <PropertyList include="kns80-config.xml">
 
   <path>kns80.ac</path>
+
+  <animation>
+    <object-name>bezel</object-name>
+    <object-name>display</object-name>
+    <object-name>btn.vor</object-name>
+    <object-name>btn.rnav</object-name>
+    <object-name>btn.hold</object-name>
+    <object-name>btn.use</object-name>
+    <object-name>btn.dsp</object-name>
+    <object-name>btn.data</object-name>
+    <object-name>knob.volume</object-name>
+    <object-name>knob.outer</object-name>
+    <object-name>knob.inner</object-name>
+    <object-name>dme.invalid</object-name>
+    <object-name>annun.allways</object-name>
+    <object-name>dme.decimal</object-name>
+    <object-name>dme.nm1</object-name>
+    <object-name>dme.nm2</object-name>
+    <object-name>dme.nm3</object-name>
+    <object-name>dme.kt1</object-name>
+    <object-name>dme.kt2</object-name>
+    <object-name>dme.kt3</object-name>
+    <object-name>dme.min1</object-name>
+    <object-name>dme.min2</object-name>
+    <object-name>digit.wpt1</object-name>
+    <object-name>digit.wpt2</object-name>
+    <object-name>digit.wpt3</object-name>
+    <object-name>digit.wpt4</object-name>
+    <object-name>digit.wpt5</object-name>
+    <object-name>annun.frq</object-name>
+    <object-name>annun.rad</object-name>
+    <object-name>annun.dst</object-name>
+    <object-name>annun.par</object-name>
+    <object-name>annun.vor</object-name>
+    <object-name>annun.enr</object-name>
+    <object-name>annun.apr</object-name>
+    <object-name>annun.rnav</object-name>
+    <object-name>annun.hld</object-name>
+    <object-name>annun.ils</object-name>
+    <object-name>digit.use</object-name>
+    <object-name>digit.display</object-name>
+  </animation>
+
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>../../../../Effects/Glass/glass</inherits-from>
+    <object-name>glass</object-name>
+  </effect>
+
   <animation>
     <name>illumination</name>
     <object-name>annun.allways</object-name>
@@ -56,6 +104,43 @@
     <object-name>dme.decimal</object-name>
   </animation>
 
+  <!-- the buttons are made from translucent white rubber or
+  plastic with backlight control the brightness with instrument lights
+  -->
+  <animation>
+    <type>material</type>
+    <object-name>illumination</object-name>
+    <object-name>btn.vor</object-name>
+    <object-name>btn.rnav</object-name>
+    <object-name>btn.hold</object-name>
+    <object-name>btn.use</object-name>
+    <object-name>btn.dsp</object-name>
+    <object-name>btn.data</object-name>
+    <emission>
+      <factor-prop>controls/lighting/instruments-norm</factor-prop>
+      <red>   0.50 </red>
+      <green> 0.40 </green>
+      <blue>  0.30 </blue>
+    </emission>
+  </animation>
+
+  <!-- the pasive parts without emission without light-map,
+  control ambient with instrument lights
+  -->
+  <animation>
+    <type>material</type>
+    <object-name>bezel</object-name>
+    <object-name>knob.inner</object-name>
+    <object-name>knob.outer</object-name>
+    <object-name>knob.volume</object-name>
+    <emission>
+      <factor-prop>controls/lighting/instruments-norm</factor-prop>
+      <red>   0.05</red>
+      <green> 0.04</green>
+      <blue>  0.03</blue>
+    </emission>
+  </animation>
+
   <animation>
     <type>select</type>
     <object-name>illumination</object-name>
@@ -65,8 +150,7 @@
     </condition>
   </animation>
 
-<!-- digit display -->
-
+  <!-- digit display -->
   <animation>
     <type>select</type>
     <object-name>digit.display</object-name>
@@ -95,8 +179,7 @@
     </condition>
   </animation>
 
-<!-- data display -->
-
+  <!-- data display -->
   <animation>
     <type>select</type>
     <object-name>annun.frq</object-name>
@@ -130,8 +213,7 @@
     </condition>
   </animation>
 
-<!-- DME display -->
-
+  <!-- DME display -->
   <animation>
     <type>select</type>
     <object-name>dme-on</object-name>
@@ -172,18 +254,16 @@
     </condition>
   </animation>
 
-<!-- DME hold -->
+  <!-- DME hold -->
+  <animation>
+    <type>select</type>
+    <object-name>annun.hld</object-name>
+    <condition>
+      <property>instrumentation/kns80/dme-hold</property>
+    </condition>
+  </animation>
 
-    <animation>
-        <type>select</type>
-        <object-name>annun.hld</object-name>
-        <condition>
-            <property>instrumentation/kns80/dme-hold</property>
-        </condition>
-    </animation>
-
-<!-- DME nautical miles -->
-
+  <!-- DME nautical miles -->
   <animation>
     <type>select</type>
     <object-name>dme.nm1</object-name>
@@ -195,8 +275,7 @@
     </condition>
   </animation>
 
-<!-- DME knots -->
-
+  <!-- DME knots -->
   <animation>
     <type>select</type>
     <object-name>dme.kt1</object-name>
@@ -219,8 +298,7 @@
     </condition>
   </animation>
 
-<!-- DME minute -->
-
+  <!-- DME minute -->
   <animation>
     <type>select</type>
     <object-name>dme.min1</object-name>
@@ -232,8 +310,7 @@
     </condition>
   </animation>
 
-<!-- WPT distance -->
-
+  <!-- WPT distance -->
   <animation>
     <type>select</type>
     <object-name>digit.wpt1</object-name>
@@ -299,8 +376,7 @@
     </condition>
   </animation>
 
-<!-- (R)NAV mode -->
-
+  <!-- (R)NAV mode -->
   <animation>
     <type>select</type>
     <object-name>annun.vor</object-name>
@@ -330,7 +406,7 @@
       <greater-than>
         <property>instrumentation/kns80/nav-mode</property>
         <value>1</value>
-    </greater-than>
+      </greater-than>
     </condition>
   </animation>
 
@@ -356,8 +432,7 @@
     </condition>
   </animation>
 
-<!-- ILS -->
-
+  <!-- ILS -->
   <animation>
     <type>select</type>
     <object-name>annun.ils</object-name>
@@ -369,8 +444,7 @@
     </condition>
   </animation>
 
-<!-- Waypoint digits -->
-
+  <!-- Waypoint digits -->
   <animation>
     <type>textranslate</type>
     <object-name>digit.wpt1</object-name>
@@ -438,8 +512,7 @@
     </axis>
   </animation>
 
-<!-- DME -->
-
+  <!-- DME -->
   <animation>
     <type>select</type>
     <object-name>dme.decimal</object-name>
@@ -563,8 +636,7 @@
     </axis>
   </animation>
 
-<!-- used and displayed waypoint -->
-
+  <!-- used and displayed waypoint -->
   <animation>
     <type>textranslate</type>
     <object-name>digit.use</object-name>
@@ -591,8 +663,7 @@
     </axis>
   </animation>
 
-<!-- hotspots -->
-
+  <!-- hotspots -->
   <animation>
     <type>rotate</type>
     <object-name>knob.volume</object-name>
@@ -915,50 +986,5 @@
       </binding>
     </shift-action>
   </animation>
-
-<!--
-    the buttons are made from translucent white rubber or plastic with backlight
-    control the brightness with instrument lights
--->
-  <animation>
-    <type>material</type>
-    <object-name>btn.vor</object-name>
-    <object-name>btn.rnav</object-name>
-    <object-name>btn.hold</object-name>
-    <object-name>btn.use</object-name>
-    <object-name>btn.dsp</object-name>
-    <object-name>btn.data</object-name>
-    <emission>
-      <factor-prop>systems/electrical/outputs/instrument-lights-norm</factor-prop>
-      <red>   0.5</red>
-      <green> 0.4</green>
-      <blue>  0.3</blue>
-    </emission>
-  </animation>
-
-<!--
-    the pasive parts without emission
-    without light-map, control ambient with instrument lights
--->
-  <animation>
-    <type>material</type>
-    <object-name>bezel</object-name>
-    <object-name>knob.inner</object-name>
-    <object-name>knob.outer</object-name>
-    <object-name>knob.volume</object-name>
-    <emission>
-      <factor-prop>systems/electrical/outputs/instrument-lights-norm</factor-prop>
-      <red>   0.05</red>
-      <green> 0.04</green>
-      <blue>  0.03</blue>
-    </emission>
-  </animation>
-
-<!-- working for Rembrandt -->
-
-  <effect>
-    <inherits-from>Models/Effects/Glass/glass</inherits-from>
-    <object-name>glass</object-name>
-  </effect>
 
 </PropertyList>

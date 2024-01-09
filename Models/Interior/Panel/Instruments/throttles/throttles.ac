@@ -3,10 +3,10 @@ MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 
 OBJECT world
 kids 4
 OBJECT poly
-name "PropCont"
+name "Mixture"
 loc 0 0 -0
 data 7
-PropCont
+Mixture
 texture "throttles.png"
 texrep 1.000000 1.000000
 crease 30.000005
@@ -2133,10 +2133,10 @@ refs 4
 266 0.635456740856 0.238344699144
 kids 0
 OBJECT poly
-name "Mixture"
+name "PropCont"
 loc 0 0 -0
 data 8
-Mixture
+PropCont
 texture "throttles.png"
 texrep 1.000000 1.000000
 crease 30.000005

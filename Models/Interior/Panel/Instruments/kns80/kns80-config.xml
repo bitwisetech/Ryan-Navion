@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <!-- KNS 80 config file -->
-
 <PropertyList>
 
   <params>
 
-  <!--  Input To KNS80   -->
+    <!--  Input To KNS80   -->
     <power-nominal>instrumentation/kns80/config/power-nominal</power-nominal>
     <power-supplied>systems/electrical/outputs/kns80</power-supplied>
     <nav-audio-btn>instrumentation/nav[1]/audio-btn</nav-audio-btn>     <!-- From KX165-2 to Nav[1]  -->
@@ -21,17 +20,17 @@
     <nav-selected-deg>instrumentation/nav[1]/radials/selected-deg</nav-selected-deg>
     <dme-in-range>instrumentation/dme[1]/in-range</dme-in-range>
     <dme-indicated-distance-nm>instrumentation/dme[1]/indicated-distance-nm</dme-indicated-distance-nm>
-    
-  <!--  Out From KNS80   -->
+
+    <!--  Out From KNS80   -->
     <nav-ident>instrumentation/nav[1]/ident</nav-ident>
     <dme-power-btn>instrumentation/dme[1]/power-btn</dme-power-btn>
 
-  <!--  In+Out   KNS80   -->
+    <!--  In+Out   KNS80   -->
     <nav-power-btn>instrumentation/nav[1]/power-btn</nav-power-btn>
     <nav-frequency>instrumentation/nav[1]/frequencies/selected-mhz</nav-frequency>
     <dme-frequency>instrumentation/dme[1]/frequencies/selected-mhz</dme-frequency>
 
-  <!--  Unused   KNS80   -->
+    <!--  Unused   KNS80   -->
     <dme-source>instrumentation/dme[1]/frequencies/source</dme-source>
 
   </params>

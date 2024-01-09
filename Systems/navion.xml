@@ -2,10 +2,10 @@
 
 <PropertyList>
 
-  <state type="int">0</state>
-  <airspeed-kmh type="float">0.0</airspeed-kmh>
-  <engine-rpm type="float">0.0</engine-rpm>
-  <engine-volume-low-rpm type="float">0.0</engine-volume-low-rpm>
+  <state                  type="int">0</state>
+  <airspeed-kmh           type="float">0.0</airspeed-kmh>
+  <engine-rpm             type="float">0.0</engine-rpm>
+  <engine-volume-low-rpm  type="float">0.0</engine-volume-low-rpm>
   <engine-volume-high-rpm type="float">0.0</engine-volume-high-rpm>
-  
+
 </PropertyList>

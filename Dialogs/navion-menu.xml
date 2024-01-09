@@ -7,7 +7,7 @@
       <label>Ryan Navion</label>
       <enabled type="bool">true</enabled>
       <item>
-        <label>Autostart</label>
+        <label>AutoStart/AutoStop</label>
         <binding>
           <command>property-toggle</command>
           <property>controls/electric/battery-switch</property>
@@ -26,7 +26,11 @@
         </binding>
         <binding>
           <command>property-toggle</command>
-          <property>controls/lighting/strobe-lights</property>
+          <property>controls/lighting/beacon</property>
+        </binding>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/lighting/strobe</property>
         </binding>
         <binding>
           <command>property-toggle</command>
@@ -36,7 +40,23 @@
           <command>property-toggle</command>
           <property>controls/engines/engine[0]/fuel-pump</property>
         </binding>
-        <!-- Magnetos -->
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/engines/engine[1]/fuel-pump</property>
+        </binding>
+        <binding>
+          <command>property-toggle</command>
+          <property>/instrumentation/comm[0]/power-btn</property>
+        </binding>
+        <binding>
+          <command>property-toggle</command>
+          <property>/instrumentation/nav[0]/power-btn</property>
+        </binding>
+        <binding>
+          <command>property-toggle</command>
+          <property>/instrumentation/adf[0]/power-btn</property>
+        </binding>
+        <!-- Magnetos ON -->
         <binding>
           <condition>
             <property>controls/switches/starterkey-insert</property>
@@ -45,11 +65,10 @@
           <property>controls/engines/engine[0]/magnetos</property>
           <value>3</value>
         </binding>
+        <!-- Magnetos OFF -->
         <binding>
           <condition>
-            <not>
-              <property>controls/switches/starterkey-insert</property>
-            </not>
+            <not><property>controls/switches/starterkey-insert</property></not>
           </condition>
           <command>property-assign</command>
           <property>controls/engines/engine[0]/magnetos</property>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <model>
+    <path>beacon.xml</path>
+    <offsets>
+      <x-m> 3.407 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 1.401 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>LampeBlancheDirection</name>
+    <path>WhiteLight.xml</path>
+    <offsets>
+      <x-m>  4.125 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -0.058 </z-m>
+    </offsets>
+  </model>
+
+  <!-- tip wings -->
+  <model>
+    <name>RedLightWithoutTank</name>
+    <path>RedLight.xml</path>
+    <offsets>
+      <x-m> -1.651 </x-m>
+      <y-m> -5.026 </y-m>
+      <z-m>  0.015 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>RedLightWithTank</name>
+    <path>RedLight.xml</path>
+    <offsets>
+      <x-m> -1.6510 </x-m>
+      <y-m> -5.2351 </y-m>
+      <z-m>  0.0150 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>StrobeLighLefttWithoutTank</name>
+    <path>StrobeLight.xml</path>
+    <offsets>
+      <x-m> -1.651 </x-m>
+      <y-m> -5.026 </y-m>
+      <z-m>  0.015 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>StrobeLighLeftWithTank</name>
+    <path>StrobeLight.xml</path>
+    <offsets>
+      <x-m> -1.6510 </x-m>
+      <y-m> -5.2351 </y-m>
+      <z-m>  0.0150 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>GreenLightWithoutTank</name>
+    <path>GreenLight.xml</path>
+    <offsets>
+      <x-m> -1.671 </x-m>
+      <y-m>  5.026 </y-m>
+      <z-m>  0.015 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>GreenLightWithTank</name>
+    <path>GreenLight.xml</path>
+    <offsets>
+      <x-m> -1.6710 </x-m>
+      <y-m>  5.2351 </y-m>
+      <z-m>  0.0150 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>StrobeLighRightWithoutTank</name>
+    <path>StrobeLight.xml</path>
+    <offsets>
+      <x-m> -1.651 </x-m>
+      <y-m>  5.026 </y-m>
+      <z-m>  0.015 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>StrobeLighRightWithTank</name>
+    <path>StrobeLight.xml</path>
+    <offsets>
+      <x-m> -1.651 </x-m>
+      <y-m>  5.026 </y-m>
+      <z-m>  0.015 </z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>RedLightWithoutTank</object-name>
+    <object-name>StrobeLighLeftWithoutTank</object-name>
+    <object-name>GreenLightWithoutTank</object-name>
+    <object-name>StrobeLighRightWithoutTank</object-name>
+    <condition>
+      <not>
+        <property>sim/model/hide-tank</property>
+      </not>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>RedLightWithTank</object-name>
+    <object-name>StrobeLighLeftWithTank</object-name>
+    <object-name>GreenLightWithTank</object-name>
+    <object-name>StrobeLighRightWithTank</object-name>
+    <condition>
+      <property>sim/model/hide-tank</property>
+    </condition>
+  </animation>
+
+  <!-- Gear light cone -->
+  <model>
+    <name>LightConeLeft</name>
+    <path>light-cone.xml</path>
+    <offsets>
+      <x-m> -1.479 </x-m>
+      <y-m> -1.170 </y-m>
+      <z-m> -0.839 </z-m>
+      <pitch-deg>-3.5</pitch-deg>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>LightConeLeft</object-name>
+    <condition>
+      <equals>
+        <property>gear/gear[1]/position-norm</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <model>
+    <name>LightConeRight</name>
+    <path>light-cone.xml</path>
+    <offsets>
+      <x-m> -1.479 </x-m>
+      <y-m>  1.170 </y-m>
+      <z-m> -0.839 </z-m>
+      <pitch-deg>-3.5</pitch-deg>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>LightConeRight</object-name>
+    <condition>
+      <equals>
+        <property>gear/gear[2]/position-norm</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+</PropertyList>

@@ -17,7 +17,7 @@
     <model>
       <path>Aircraft/Ryan-Navion/Models/navion.xml</path>
       <livery>
-        <file type="string">default</file>
+        <file type="string"></file>
       </livery>
     </model>
 
@@ -27,7 +27,7 @@
     </systems>
 
     <instrumentation>
-      <path>Aircraft/Ryan-Navion/Systems/instrumentation.xml</path>
+      <path>Aircraft/Ryan-Navion/Systems/initialisation.xml</path>
       <path>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kns80/kns80-props.xml</path>
     </instrumentation>
 
@@ -38,31 +38,31 @@
     <multiplay>
       <chat_display>1</chat_display>
       <generic>
-        <int   n="0"  type="int">  0 </int>
-        <int   n="1"  type="int">  0 </int>
-        <int   n="2"  type="int">  0 </int>
-        <int   n="3"  type="int">  0 </int>
-        <int   n="4"  type="int">  0 </int>
-        <int   n="5"  type="int">  0 </int>
-        <int   n="6"  type="bool"> 1 </int>
-        <int   n="7"  type="int">  0 </int>
-        <int   n="8"  alias="/systems/electrical/outputs/nav-lights">0</int>
-        <int   n="9"  alias="/sim/model/lights/beacon/state">false</int>
-        <float n="0"  alias="/sim/model/door-positions/crew/position-norm"/>
-        <float n="1"  alias="/sim/model/door-positions/passenger/position-norm"/>
-        <float n="2"  alias="/position/gear-agl-m">0</float>
-        <float n="3"  alias="/position/altitude-ft">0</float>
-        <float n="4"  alias="/engines/engine[0]/rpm"/>
-        <float n="5"  alias="/engines/engine[0]/cranking"/>
-        <float n="6"  alias="/gear/gear[0]/wow"/>
-        <float n="7"  alias="/gear/gear[1]/wow"/>
-        <float n="8"  alias="/gear/gear[2]/wow"/>
-        <float n="9"  alias="/gear/gear[0]/rollspeed-ms"/>
-        <float n="10" alias="/gear/gear[1]/rollspeed-ms"/>
-        <float n="11" alias="/gear/gear[2]/rollspeed-ms"/>
+        <int    n="0"  type="int">0</int>
+        <int    n="1"  type="int">0</int>
+        <int    n="2"  type="int">0</int>
+        <int    n="3"  type="int">0</int>
+        <int    n="4"  type="int">0</int>
+        <int    n="5"  type="int">0</int>
+        <int    n="6"  type="bool">1</int>
+        <int    n="7"  type="int">0</int>
+        <int    n="8"  alias="/systems/electrical/outputs/nav-lights">0</int>
+        <int    n="9"  alias="/sim/model/lights/beacon/state">false</int>
+        <float  n="0"  alias="/sim/model/door-positions/crew/position-norm"/>
+        <float  n="1"  alias="/sim/model/door-positions/passenger/position-norm"/>
+        <float  n="2"  alias="/position/gear-Ryan-Navionagl-m">0</float>
+        <float  n="3"  alias="/position/altitude-ft">0</float>
+        <float  n="4"  alias="/engines/engine[0]/rpm"/>
+        <float  n="5"  alias="/engines/engine[0]/cranking"/>
+        <float  n="6"  alias="/gear/gear[0]/wow"/>
+        <float  n="7"  alias="/gear/gear[1]/wow"/>
+        <float  n="8"  alias="/gear/gear[2]/wow"/>
+        <float  n="9"  alias="/gear/gear[0]/rollspeed-ms"/>
+        <float  n="10" alias="/gear/gear[1]/rollspeed-ms"/>
+        <float  n="11" alias="/gear/gear[2]/rollspeed-ms"/>
         <!-- For Bombable -->
-        <int type="int" n="10" alias="controls/armament/trigger">0</int>
-        <string n="9" type="string" />
+        <int    n="10" type="int" alias="controls/armament/trigger">0</int>
+        <string n="9"  type="string" />
       </generic>
     </multiplay>
 
@@ -112,17 +112,18 @@
 
   <controls include="controls.xml"/>
 
-  <instrumentation include="initialisation.xml"/>
+  <instrumentation include="instrumentation.xml"/>
 
   <engines include="engines.xml"/>
 
-  <autopilot include="Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kap140/kap140-properties.xml"/>
+  <autopilot include="../Models/Interior/Panel/Instruments/kap140/kap140-properties.xml"/>
 
   <nasal>
     <doors>
       <file>Aircraft/Ryan-Navion/Nasal/doors.nas</file>
     </doors>
     <navion>
+      <file>Aircraft/Ryan-Navion/Nasal/hdr.nas</file>
       <file>Aircraft/Ryan-Navion/Nasal/liveries.nas</file>
       <file>Aircraft/Ryan-Navion/Nasal/light.nas</file>
       <file>Aircraft/Ryan-Navion/Nasal/convert.nas</file>
@@ -130,7 +131,7 @@
       <file>Aircraft/Ryan-Navion/Nasal/navion.nas</file>
     </navion>
     <kns80>
-      <file>Aircraft/Ryan-Navion/Nasal/kns80.nas</file>
+      <file>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kns80/kns80.nas</file>
     </kns80>
     <kcs55>
       <file>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kcs55/kcs55.nas</file>
@@ -144,8 +145,20 @@
       <file>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kr87-adf/kr87.nas</file>
     </kr87>
     <kap140>
-      <file>Aircraft/Ryan-Navion/Nasal/kap140.nas</file>
+      <file>Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kap140/kap140.nas</file>
     </kap140>
+
+    aircraft.data.add(
+      "instrumentation/nav[0]/audio-btn",
+      "instrumentation/nav[0]/power-btn",
+      "instrumentation/nav[0]/frequencies/selected-mhz",
+      "instrumentation/nav[0]/frequencies/standby-mhz",
+      "instrumentation/comm[0]/volume",
+      "instrumentation/comm[0]/frequencies/selected-mhz",
+      "instrumentation/comm[0]/frequencies/standby-mhz",
+      "instrumentation/comm[0]/test-btn",
+    );
+
   </nasal>
 
 </PropertyList>

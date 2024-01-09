@@ -2,15 +2,6 @@
 
 <PropertyList>
 
-  <animation>
-    <type>select</type>
-    <object-name>taillight</object-name>
-    <condition>
-      <property>/controls/lighting/nav-lights</property>
-      property>
-    </condition>
-  </animation>
-
   <light>
     <name>taillight</name>
     <type>point</type>
@@ -54,6 +45,15 @@
   <animation>
     <type>noshadow</type>
     <object-name>taillight</object-name>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>taillight</object-name>
+    <condition>
+      <property>/controls/lighting/nav-lights</property>
+      property>
+    </condition>
   </animation>
 
 </PropertyList>

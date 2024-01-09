@@ -5,6 +5,10 @@
   <title>Ryan Navion</title>
   <line>______________________________________________</line>
   <key>
+    <name>}</name>
+    <desc>AutoStart/AutoStop</desc>
+  </key>
+  <key>
     <name>d</name>
     <desc>Open/Close bay</desc>
   </key>
@@ -16,5 +20,5 @@
     <name>c</name>
     <desc>Control Wheel Steering (CWS)</desc>
   </key>
-  
+
 </PropertyList>

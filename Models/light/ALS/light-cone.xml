@@ -34,23 +34,6 @@
      </emission>
    </animation>
 
-   <animation>
-     <type>select</type>
-     <object-name>PetitCone</object-name>
-     <condition>
-       <property>controls/lighting/landing-lights</property>
-     </condition>
-   </animation>
-
-   <animation>
-    <type>select</type>
-    <object-name>ProceduralLandingLight</object-name>
-    <nopreview/>
-    <condition>
-      <property>controls/lighting/landing-lights</property>
-    </condition>
-  </animation>
-
   <light>
     <name>ProceduralLandingLight</name>
     <type>spot</type>
@@ -97,6 +80,16 @@
     <type>noshadow</type>
     <object-name>PetitCone</object-name>
     <object-name>ProceduralLandingLight</object-name>
+  </animation>
+
+   <animation>
+    <type>select</type>
+     <object-name>PetitCone</object-name>
+    <object-name>ProceduralLandingLight</object-name>
+    <nopreview/>
+    <condition>
+      <property>controls/lighting/landing-lights</property>
+    </condition>
   </animation>
 
 </PropertyList>

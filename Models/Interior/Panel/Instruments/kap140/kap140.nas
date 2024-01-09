@@ -1,4 +1,4 @@
-var config = io.read_properties("Models/Interior/Panel/Instruments/kap140/kap140-config.xml");
+var config = io.read_properties("Aircraft/Ryan-Navion/Models/Interior/Panel/Instruments/kap140/kap140-config.xml");
 
 var kap140_ap   = props.globals.initNode("autopilot/kap140/event/button-ap" ,  0, "BOOL");
 var kap140_hdg  = props.globals.initNode("autopilot/kap140/event/button-hdg",  0, "BOOL");
@@ -13,104 +13,76 @@ var kap140_baro = props.globals.initNode("autopilot/kap140/event/button-baro", 0
 var kap140_outer= props.globals.initNode("autopilot/kap140/event/knob-outer",  0, "INT");
 var kap140_inner= props.globals.initNode("autopilot/kap140/event/knob-inner",  0, "INT");
 
-
-
 setlistener(kap140_ap, func(ap) {
-    if (ap.getBoolValue()) {
-        setprop("autopilot/kap140/panel/button-ap",     getprop("sim/time/elapsed-sec"));
-        setprop("autopilot/kap140/panel/state-old",     getprop("autopilot/kap140/panel/state"));
-        setprop("autopilot/internal/target-climb-rate", getprop("autopilot/internal/vert-speed-fpm"));
-    }
-    else
-    {
-        setprop("autopilot/kap140/panel/button-ap", 0);
-    }
+  if (ap.getBoolValue()) {
+    setprop("autopilot/kap140/panel/button-ap",     getprop("sim/time/elapsed-sec"));
+    setprop("autopilot/kap140/panel/state-old",     getprop("autopilot/kap140/panel/state"));
+    setprop("autopilot/internal/target-climb-rate", getprop("autopilot/internal/vert-speed-fpm"));
+  } else {
+    setprop("autopilot/kap140/panel/button-ap", 0);
+  }
 },0,0);
 
 setlistener(kap140_hdg, func(hdg) {
-    if (hdg.getBoolValue()) {
-        setprop("autopilot/kap140/panel/button-hdg", getprop("sim/time/elapsed-sec"));
-        if (getprop("autopilot/kap140/panel/state") == 6) {
-            if (
-                getprop("autopilot/kap140/settings/lateral-mode") < 3 and
-                getprop("autopilot/kap140/settings/lateral-arm") < 3
-            ) {
-                if (getprop("autopilot/kap140/settings/lateral-mode") == 1)
-                {
-                    setprop("autopilot/kap140/settings/lateral-mode", 2);
-                }
-                else if (getprop("autopilot/kap140/settings/lateral-mode") == 2)
-                {
-                    setprop("autopilot/kap140/settings/lateral-mode", 1);
-                }
-            }
-            if (
-                getprop("autopilot/kap140/settings/lateral-mode") > 2 and
-                getprop("autopilot/kap140/settings/lateral-mode") < 6
-            ) {
-                if (getprop("autopilot/kap140/settings/from-hdg"))
-                {
-                    setprop("autopilot/kap140/settings/lateral-mode", 2);
-                }
-                else
-                {
-                    setprop("autopilot/kap140/settings/lateral-mode", 1);
-                }
-            }
-            if (getprop("autopilot/kap140/settings/lateral-mode") < 3)
-            {
-                setprop("autopilot/kap140/settings/from-hdg", 0);
-            }
+  if (hdg.getBoolValue()) {
+    setprop("autopilot/kap140/panel/button-hdg", getprop("sim/time/elapsed-sec"));
+    if (getprop("autopilot/kap140/panel/state") == 6) {
+      if ( getprop("autopilot/kap140/settings/lateral-mode") < 3 and getprop("autopilot/kap140/settings/lateral-arm") < 3 ) {
+        if (getprop("autopilot/kap140/settings/lateral-mode") == 1) {
+          setprop("autopilot/kap140/settings/lateral-mode", 2);
+        } else if (getprop("autopilot/kap140/settings/lateral-mode") == 2) {
+          setprop("autopilot/kap140/settings/lateral-mode", 1);
         }
+      }
+      if ( getprop("autopilot/kap140/settings/lateral-mode") > 2 and getprop("autopilot/kap140/settings/lateral-mode") < 6 ) {
+        if (getprop("autopilot/kap140/settings/from-hdg")) {
+          setprop("autopilot/kap140/settings/lateral-mode", 2);
+        } else {
+          setprop("autopilot/kap140/settings/lateral-mode", 1);
+        }
+      }
+      if (getprop("autopilot/kap140/settings/lateral-mode") < 3) {
+        setprop("autopilot/kap140/settings/from-hdg", 0);
+      }
     }
-    else
-    {
-        setprop("autopilot/kap140/panel/button-hdg", 0);
-    }
-    setprop("autopilot/kap140/settings/lateral-arm", 0);
-    setprop("autopilot/internal/target-roll-deg", 0);
-    setprop("autopilot/internal/target-intercept-angle", 0);
-    setprop("autopilot/kap140/panel/hdg-timer", 0);
-    setprop("autopilot/kap140/panel/nav-timer", 0);
+  } else {
+    setprop("autopilot/kap140/panel/button-hdg", 0);
+  }
+  setprop("autopilot/kap140/settings/lateral-arm", 0);
+  setprop("autopilot/internal/target-roll-deg", 0);
+  setprop("autopilot/internal/target-intercept-angle", 0);
+  setprop("autopilot/kap140/panel/hdg-timer", 0);
+  setprop("autopilot/kap140/panel/nav-timer", 0);
 },0,0);
 
 setlistener(kap140_nav, func(nav) {
-    if (nav.getBoolValue()) {
-        setprop("autopilot/kap140/panel/button-nav", getprop("sim/time/elapsed-sec"));
-        if (getprop("autopilot/kap140/panel/state") == 6) {
-            var hsi_installed = config.getValue("params/hsi-installed");
-            if (getprop("autopilot/kap140/settings/lateral-mode") != 3) {
-                if (getprop("autopilot/kap140/settings/lateral-arm") == 3) {
-                    setprop("autopilot/kap140/settings/lateral-arm", 0);
-                }
-                else
-                {
-                    setprop("autopilot/kap140/settings/lateral-arm", 3);
-                }
-            }
-            if (!getprop(hsi_installed))
-            {
-                if (getprop("autopilot/kap140/settings/lateral-arm") == 3)
-                {
-                    if (getprop("autopilot/kap140/settings/lateral-mode") == 2)
-                    {
-                        setprop("autopilot/kap140/settings/from-hdg", 1);
-                    }
-                    setprop("autopilot/kap140/panel/hdg-timer", getprop("sim/time/elapsed-sec"));
-                }
-                else
-                {
-                    setprop("autopilot/kap140/settings/from-hdg", 0);
-                    setprop("autopilot/kap140/panel/hdg-timer", 0);
-                }
-            }
+  if (nav.getBoolValue()) {
+    setprop("autopilot/kap140/panel/button-nav", getprop("sim/time/elapsed-sec"));
+    if (getprop("autopilot/kap140/panel/state") == 6) {
+      var hsi_installed = config.getValue("params/hsi-installed");
+      if (getprop("autopilot/kap140/settings/lateral-mode") != 3) {
+        if (getprop("autopilot/kap140/settings/lateral-arm") == 3) {
+          setprop("autopilot/kap140/settings/lateral-arm", 0);
+        } else {
+          setprop("autopilot/kap140/settings/lateral-arm", 3);
         }
+      }
+      if (!getprop(hsi_installed)) {
+        if (getprop("autopilot/kap140/settings/lateral-arm") == 3) {
+          if (getprop("autopilot/kap140/settings/lateral-mode") == 2) {
+            setprop("autopilot/kap140/settings/from-hdg", 1);
+          }
+          setprop("autopilot/kap140/panel/hdg-timer", getprop("sim/time/elapsed-sec"));
+        } else {
+          setprop("autopilot/kap140/settings/from-hdg", 0);
+          setprop("autopilot/kap140/panel/hdg-timer", 0);
+        }
+      }
     }
-    else
-    {
-        setprop("autopilot/kap140/panel/button-nav", 0);
-    }
-    setprop("autopilot/kap140/panel/nav-timer", 0);
+  } else {
+    setprop("autopilot/kap140/panel/button-nav", 0);
+  }
+  setprop("autopilot/kap140/panel/nav-timer", 0);
 },0,0);
 
 setlistener(kap140_apr, func(apr) {

@@ -217,7 +217,7 @@
       <property>controls/electric/battery-switch</property>
     </condition>
     <emission>
-      <factor-prop>controls/lighting/luminosite-lights</factor-prop>
+      <factor-prop>controls/lighting/instruments-norm</factor-prop>
       <red>   0.50 </red>
       <green> 0.40 </green>
       <blue>  0.30 </blue>
@@ -943,8 +943,8 @@
       </binding>
       <binding>
         <command>property-swap</command>
-        <property alias="../../../../params/nav-frq-standby"/>
         <property alias="../../../../params/nav-frq-selected"/>
+        <property alias="../../../../params/nav-frq-standby"/>
       </binding>
       <mod-up>
         <binding>
