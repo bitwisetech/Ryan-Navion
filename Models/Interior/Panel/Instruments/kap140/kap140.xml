@@ -1337,7 +1337,6 @@
   </animation>
 
   <!-- Actions -->
-
   <animation>
     <type>pick</type>
     <object-name>btn-ap</object-name>
@@ -1461,7 +1460,6 @@
           <value>0</value>
         </binding>
       </mod-up>
-
     </action>
   </animation>
 
@@ -1578,6 +1576,11 @@
     <object-name>knob-inner</object-name>
     <property>autopilot/kap140/panel/knob-inner-pos</property>
     <factor> 15 </factor>
+    <center>
+      <x-m>  0.01500 </x-m>
+      <y-m>  0.06500 </y-m>
+      <z-m> -0.00600 </z-m>
+    </center>
     <axis>
       <x> 1 </x>
       <y> 0 </y>
@@ -1590,6 +1593,11 @@
     <object-name>knob-outer</object-name>
     <property>autopilot/kap140/panel/knob-outer-pos</property>
     <factor> 10 </factor>
+    <center>
+      <x-m>  0.01500 </x-m>
+      <y-m>  0.06500 </y-m>
+      <z-m> -0.00600 </z-m>
+    </center>
     <axis>
       <x> 1 </x>
       <y> 0 </y>
