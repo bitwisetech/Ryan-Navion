@@ -19,7 +19,7 @@ are displayed.
 
 panel 
 
-  Various panel.xml files are reatained: 
+  Various panel.xml files are retained: 
 panel-orig.xml     is the original layout with KNS80 situated on the right beyond the radio stack.
 panel-orig-525.xml is the original layout, as above with KFC55-KI525, nav=selecot-pbs in place of HSI252
 panel-pack.xml     re-arranges the radio stack to include KNS80 for up-close readability
